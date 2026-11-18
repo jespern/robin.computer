@@ -3,8 +3,7 @@
   "client_name": "Robin",
   "client_uri": "https://robin.computer/",
   "redirect_uris": [
-    "https://robin.noehr.es:8443/link/fastmail",
-    "https://robin.computer/link/fastmail/"
+    "http://localhost/link/fastmail"
   ],
   "grant_types": [
     "authorization_code",
@@ -14,5 +13,6 @@
     "code"
   ],
   "token_endpoint_auth_method": "none",
-  "scope": "urn:ietf:params:oauth:scope:mail urn:ietf:params:oauth:scope:calendars offline_access"
+  "scope": "urn:ietf:params:oauth:scope:mail urn:ietf:params:oauth:scope:calendars offline_access",
+  "application_type": "native"
 }

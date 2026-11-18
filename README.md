@@ -30,6 +30,13 @@ are planned information sources. The owner explicitly requested these future
 providers on the site; this copy does not change Robin's technical decisions,
 stages, permissions or current connector availability.
 
+The fourth pass leads with coordination and productivity: “Connect the dots.
+Move life forward.” The hero combines a calendar event, a changed location in
+Slack, traffic and weather into one suggested departure plan. Its caption
+identifies the illustration and planned capabilities. Coordination scenarios
+now precede the mail-routing demo; the demo remains further down the page.
+Provider marks are hosted locally with provenance in `assets/providers/`.
+
 Architecture copy follows Robin's `SPEC.md` and `deploy/suture-evaluation.md`:
 qmail-inspired process/privilege separation, and Erlang/OTP-inspired supervision
 through Suture, pinned and vendored in Go. Upstream references are linked on

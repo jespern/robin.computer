@@ -1,0 +1,42 @@
+{
+  "gmail.svg": {
+    "source": "https://www.gstatic.com/images/branding/productlogos/gmail_2026/v2/web/192px.svg",
+    "bytes": 1298,
+    "sha256": "0a242131424b796a26247a8edd41d66fa294da6d177897526a19b7e81aedfdb8"
+  },
+  "calendar.svg": {
+    "source": "https://www.gstatic.com/images/branding/productlogos/calendar_2026/v2/web/192px.svg",
+    "bytes": 3330,
+    "sha256": "7f55cd877b2261948168db3d2e9468c0cf3f07766789489e853a0f9931dff8ea"
+  },
+  "google.png": {
+    "source": "https://www.gstatic.com/images/branding/googleg_gradient/2x/googleg_gradient_standard_20dp.png",
+    "bytes": 1952,
+    "sha256": "370f57957b052d627d3ce6f80f4e643cb178c78a493806fdc0b939cc0efb74d4"
+  },
+  "slack.png": {
+    "source": "https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_256.png",
+    "bytes": 5253,
+    "sha256": "fff0ab554a4dc202afd1cbf2033a3ad340cf25b4991035d2d31407b5e7e4c366"
+  },
+  "telegram.svg": {
+    "source": "https://telegram.org/img/t_logo.svg",
+    "bytes": 1694,
+    "sha256": "85059d5e5bf7bda91ebab30664993c49867a26be6b947834aca16c846581766a"
+  },
+  "weather.svg": {
+    "source": "https://maps.gstatic.com/weather/v1/showers.svg",
+    "bytes": 979,
+    "sha256": "c92b05371527375f23c75a500c29b3ae20246f77e0a8f2643731b33272fc158c"
+  },
+  "fastmail.svg": {
+    "source": "https://www.fastmail.com/favicon.svg?v=5843ac65",
+    "bytes": 1054,
+    "sha256": "5843ac656fddc88853a287f1cbd92a8a91eb707074b75a14ec28d2bec6c51ba7"
+  },
+  "whatsapp.webp": {
+    "source": "https://static.whatsapp.net/rsrc.php/yI/r/EoOh62-jiPS.webp",
+    "bytes": 2820,
+    "sha256": "cf032befd6c1f824beea996cdbeefb94ae160650438235e25022b8ae7451444c"
+  }
+}

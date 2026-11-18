@@ -19,7 +19,7 @@ const server = createServer(async (req, res) => {
   if (!path.startsWith(root + '/')) { res.writeHead(404).end(); return; }
   try {
     const bytes = await readFile(path);
-    const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.json': 'application/json' };
+    const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json' };
     res.writeHead(200, { 'Content-Type': types[extname(path)] || 'application/octet-stream' }).end(bytes);
   } catch { res.writeHead(404).end(); }
 });
@@ -74,6 +74,8 @@ try {
     await evaluate(`new Promise(resolve=>{if(document.readyState==='complete')resolve();else addEventListener('load',resolve,{once:true})})`);
     assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true, `horizontal overflow at ${width}px`);
     assert.equal(await evaluate(`document.querySelectorAll('h1').length`), 1);
+    assert.equal(await evaluate(`Array.from(document.images).every(img=>img.complete&&img.naturalWidth>0)`), true, 'a local provider logo did not load');
+    assert.equal(await evaluate(`(() => {const cards=Array.from(document.querySelectorAll('.context-piece'),el=>el.getBoundingClientRect());return cards.every((a,i)=>cards.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))})()`), true, `hero source cards overlap at ${width}px`);
     assert.equal(await evaluate(`getComputedStyle(document.querySelector('.brand-dot')).backgroundColor`), 'rgb(112, 151, 124)');
     assert.equal(await evaluate(`Array.from(document.querySelectorAll('a[href^="#"]')).every(a=>a.hash===''||!!document.getElementById(a.hash.slice(1)))`), true, 'broken section link');
     for (const [name, tier] of [['delivery', 'silent'], ['invoice', 'batch'], ['newsletter', 'silent'], ['person', 'interrupt']]) {
@@ -119,11 +121,12 @@ try {
   assert.deepEqual(contrastFailures, [], 'text contrast below WCAG AA');
   await call('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   assert.equal(await evaluate('getComputedStyle(document.documentElement).scrollBehavior'), 'auto');
+  const headingBeforeReload = await evaluate(`document.querySelector('h1').textContent`);
   await call('Emulation.setScriptExecutionDisabled', { value: true });
   await call('Page.reload');
   await call('Emulation.setScriptExecutionDisabled', { value: false });
   await evaluate(`new Promise(resolve=>{if(document.readyState==='complete')resolve();else addEventListener('load',resolve,{once:true})})`);
-  assert.equal(await evaluate(`document.querySelector('h1').textContent.includes('less noise')`), true);
+  assert.equal(await evaluate(`document.querySelector('h1').textContent`), headingBeforeReload);
   assert.equal(await evaluate(`document.querySelector('[data-result-title]').textContent`), 'This one deserves you.');
   assert.deepEqual(errors, [], 'browser exceptions');
   assert.deepEqual(failedRequests, [], 'failed assets');

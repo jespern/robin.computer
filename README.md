@@ -30,9 +30,20 @@ GitHub Pages serves the root with the custom domain in `CNAME`. Preserve
 infrastructure, separate from the landing page. Do not place private app URLs,
 account details or credentials here.
 
-This first pass is prepared on `landing-page`; the main domain is unchanged
-until that branch is integrated and pushed. A separate Sites preview is used
-for visual review, without changing DNS or the GitHub Pages deployment.
+This first pass is committed on `landing-page` in the isolated worktree
+`/Users/jespern/Work/robin.computer-landing`; the main domain is unchanged until
+that branch is integrated and pushed. The owner selected “Build and publish a
+preview”. A separate owner-private Sites preview was successfully published on
+2026-11-18, without changing DNS or the GitHub Pages deployment:
+
+https://robin-attention-router-preview.mirador-5864.chatgpt.site
+
+Its checkout is `/Users/jespern/Work/robin-landing-preview`; the persisted Site
+identity is in that checkout's `.openai/hosting.json`. Reuse it for revisions.
+The deployed static directory contains an exact copy of this branch's
+`index.html` and `assets/`. Keep the website repository as the source of truth,
+copy changed public assets to the preview, and save/deploy a new Site version.
+Do not copy `CNAME` or the Fastmail sign-in infrastructure to the preview.
 
 Check with Node 22.22.2 and an installed Chrome (override `ROBIN_CHROME` if needed):
 
@@ -44,6 +55,11 @@ git diff --check
 
 The browser check owns and stops its static server and isolated Chrome profile.
 It checks six widths from 320 to 1920px, the routing examples, native keyboard
-activation, reduced motion, section links, readable HTML without JavaScript,
-browser errors and external resource loads. Screenshots go to the OS temporary
+activation, text contrast, reduced motion, section links, readable HTML without
+JavaScript, browser errors and external resource loads. Screenshots go to the OS temporary
 directory (or `ROBIN_SCREENSHOTS`), never into the repository.
+
+Validation passed with Chrome on 2026-11-18. Desktop and phone screenshots were
+visually reviewed. The original `oauth/fastmail.json`, `link/fastmail/index.html`,
+`CNAME` and `.nojekyll` are byte-for-byte unchanged. No private Robin service was
+started or restarted, and no account/model calls were made.

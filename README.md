@@ -44,6 +44,13 @@ parcel. It balances immediate attention with proactive coordination. The first
 fuller scenario now starts with a person's email and the context for a reply,
 rather than leading with meeting preparation alone.
 
+The passport-renewal scenario follows that email example: a weeks-old personal
+renewal message connects to a new work flight booking. Robin checks for a later
+completion message before asking once whether the passport has arrived. This
+illustrates the accepted attention design's cross-account connection through
+context, rather than a shared thread or reference number. It remains under the
+same planned/illustrative label as the other proactive examples.
+
 Architecture copy follows Robin's `SPEC.md` and `deploy/suture-evaluation.md`:
 qmail-inspired process/privilege separation, and Erlang/OTP-inspired supervision
 through Suture, pinned and vendored in Go. Upstream references are linked on

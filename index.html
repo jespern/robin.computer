@@ -1,4 +1,140 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>Robin</title>
-<p>Robin is a personal attention router. This site holds the public pieces its sign-ins need.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="Robin is a personal attention router. A self-hosted assistant that makes room for what matters, built in Go with qmail-inspired process isolation and OTP-inspired supervision through Suture.">
+  <meta property="og:title" content="Robin — A personal attention router">
+  <meta property="og:description" content="A little less noise. A lot more room. Meet Robin, a personal assistant built around your attention.">
+  <meta property="og:type" content="website">
+  <title>Robin — A personal attention router</title>
+  <link rel="icon" href="/assets/robin.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Robin home">Robin<span class="brand-dot" aria-hidden="true"></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#idea">The idea</a>
+      <a href="#under-the-hood">Under the hood</a>
+      <a class="nav-status" href="#progress"><span aria-hidden="true"></span>In the making</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-dot" aria-hidden="true"></span>A personal attention router</p>
+        <h1 id="hero-title">A little less noise.<br>A lot more <em>room.</em></h1>
+        <p class="hero-description">Meet Robin. A personal assistant that sorts through what comes in, keeps the context, and helps you find what deserves your attention.</p>
+        <a class="button" href="#idea">Meet Robin <span aria-hidden="true">↘</span></a>
+        <p class="hero-footnote">Your machine. Your context. Your attention.</p>
+      </div>
+
+      <figure class="router-figure" aria-labelledby="router-caption">
+        <div class="router-art" aria-hidden="true">
+          <svg class="routes" viewBox="0 0 600 530" fill="none">
+            <defs>
+              <radialGradient id="dot-light" cx=".34" cy=".25" r=".8"><stop stop-color="#b0c4a4"/><stop offset=".48" stop-color="#799570"/><stop offset="1" stop-color="#3c654e"/></radialGradient>
+              <radialGradient id="halo"><stop stop-color="#e4e9dc" stop-opacity=".8"/><stop offset="1" stop-color="#e4e9dc" stop-opacity="0"/></radialGradient>
+            </defs>
+            <circle cx="310" cy="262" r="245" fill="url(#halo)"/>
+            <circle cx="310" cy="262" r="185" stroke="#dce2d5" stroke-dasharray="2 8"/>
+            <circle cx="310" cy="262" r="132" stroke="#dce2d5"/>
+            <path d="M78 126H140Q182 126 204 168L254 238M45 263H252M78 399H138Q180 399 202 357L254 286" stroke="#c2ccbd"/>
+            <path d="M366 246L414 158Q430 128 465 128H544" stroke="#70977c"/>
+            <path d="M370 263H559M366 282L414 371Q430 400 465 400H544" stroke="#c2ccbd"/>
+            <circle cx="197" cy="157" r="4" fill="#b7c4ae"/>
+            <circle cx="158" cy="263" r="4" fill="#b7c4ae"/>
+            <circle cx="204" cy="355" r="4" fill="#b7c4ae"/>
+            <circle cx="446" cy="131" r="5" fill="#70977c"/>
+            <circle cx="484" cy="263" r="4" fill="#b7c4ae"/>
+            <circle cx="430" cy="387" r="4" fill="#b7c4ae"/>
+            <circle cx="310" cy="267" r="61" fill="#c3cfb7" opacity=".23"/>
+            <circle class="robin-orb" cx="310" cy="262" r="56" fill="url(#dot-light)"/>
+            <path d="M291 243a29 29 0 0 1 28-11" stroke="#d4dfc8" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div class="art-note note-mail"><span class="note-icon">↗</span><span>A message<br><small>from a person</small></span></div>
+          <div class="art-note note-update"><span class="note-icon">⌁</span><span>An update<br><small>in the background</small></span></div>
+          <div class="art-note note-news"><span class="note-icon">≋</span><span>Another newsletter</span></div>
+          <div class="art-output output-now"><span class="tiny-dot"></span>Worth your attention</div>
+          <div class="art-output output-later">When you have a moment</div>
+          <div class="art-output output-quiet">Quietly kept in context</div>
+          <span class="orb-label">Robin</span>
+        </div>
+        <figcaption id="router-caption"><span>Everything coming in.</span><span>A little more considered.</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="intro-band">
+      <div class="wrap intro-line"><p>Attention is personal.<br><span>Your assistant should be, too.</span></p><p>Robin starts with mail and calendar, bringing them into one conversation. The goal is simple: fewer things to check, and a clearer sense of what needs you.</p></div>
+    </div>
+
+    <section class="routing wrap section" id="idea" aria-labelledby="routing-title">
+      <div class="section-heading"><p class="eyebrow">01 / A place for everything</p><h2 id="routing-title">Everything gets considered.<br>Only some things need <em>you.</em></h2><p>A message arriving and a message mattering are two different events. Robin’s routing policy gives each one a place.</p></div>
+      <div class="routing-demo" data-demo>
+        <div class="demo-incoming">
+          <p class="micro-label">Try an example <span aria-hidden="true">↓</span></p>
+          <div class="example-list" role="group" aria-label="Illustrative incoming messages">
+            <button class="example is-selected" data-example="person" aria-pressed="true"><span class="example-icon" aria-hidden="true">↗</span><span><strong>A person you know</strong><small>“Can you take a look today?”</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button class="example" data-example="delivery" aria-pressed="false"><span class="example-icon" aria-hidden="true">□</span><span><strong>A delivery update</strong><small>Your parcel is moving.</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button class="example" data-example="invoice" aria-pressed="false"><span class="example-icon" aria-hidden="true">≡</span><span><strong>An invoice to review</strong><small>A little admin for later.</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+            <button class="example" data-example="newsletter" aria-pressed="false"><span class="example-icon" aria-hidden="true">≋</span><span><strong>The weekly roundup</strong><small>Something to read, sometime.</small></span><span class="example-arrow" aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <div class="demo-result" aria-live="polite" aria-atomic="true">
+          <div class="result-top"><span class="brand small-brand">Robin<span class="brand-dot" aria-hidden="true"></span></span><span class="micro-label">A considered decision</span></div>
+          <p class="result-tier" data-tier>Interrupt</p>
+          <h3 data-result-title>This one deserves you.</h3>
+          <p class="result-description" data-result-description>A direct message from someone you’ve replied to before. Bring it to your attention.</p>
+          <div class="tier-scale" aria-label="Routing tiers"><span data-route="interrupt" class="active">Now</span><span data-route="batch">Batch</span><span data-route="digest">Digest</span><span data-route="silent">Quiet</span></div>
+          <p class="demo-note">Illustrative policy examples. Live notifications and order tracking are being built.</p>
+        </div>
+      </div>
+      <div class="routing-principles"><p><span>01</span><strong>Rules first.</strong> Use a model when judgement is needed.</p><p><span>02</span><strong>Uncertainty stays visible.</strong> It never becomes silent confidence.</p><p><span>03</span><strong>Keep the reason.</strong> Decisions can be inspected and replayed.</p></div>
+    </section>
+
+    <section class="engineering" id="under-the-hood" aria-labelledby="engineering-title">
+      <div class="wrap section">
+        <p class="eyebrow">02 / Good ideas have a lineage</p>
+        <div class="engineering-heading"><h2 id="engineering-title">Modern intelligence.<br><em>Old-school discipline.</em></h2><p>An assistant sits close to your life. Its process boundaries and recovery behaviour deserve as much thought as its personality.</p></div>
+        <div class="lineage">
+          <article class="lineage-item">
+            <div class="lineage-number">a / Separation</div>
+            <h3>Heavily inspired<br>by qmail.</h3>
+            <p>Small processes. Narrow responsibilities. Explicit handoffs. Robin borrows heavily from qmail’s approach to process operation and privilege separation.</p>
+            <p>Fetchers hold one account’s access. A confined parser handles untrusted content without credentials or a network. A store process owns the database. The model runner stays separate from mailbox credentials.</p>
+            <div class="process-flow" aria-label="Fetcher passes spool files to parser, then records to store"><span>fetcher</span><i aria-hidden="true">→</i><span>parser</span><i aria-hidden="true">→</i><span>store</span></div>
+            <a class="text-link" href="https://cr.yp.to/qmail.html">The qmail influence <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="lineage-item">
+            <div class="lineage-number">b / Supervision</div>
+            <h3>Erlang’s OTP spirit.<br>Go, with Suture.</h3>
+            <p>Services fail. What matters is how they recover. Robin takes inspiration from Erlang/OTP’s supervision trees through Suture, pinned and vendored with its Go code.</p>
+            <p>Suture supervises service lifecycles. Robin keeps responsibility for process cleanup, readiness, restart delays and orderly shutdown. Recoverable workers restart independently; critical failures stop the group.</p>
+            <div class="supervision-tree" aria-label="Robin supervisor oversees the store, runner and pipeline"><span class="tree-root">supervisor</span><div><span>store</span><span>runner</span><span>pipeline</span></div></div>
+            <a class="text-link" href="https://github.com/thejerf/suture">Meet Suture <span aria-hidden="true">↗</span></a><a class="text-link second-link" href="https://www.erlang.org/doc/system/sup_princ.html">OTP supervision <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="engineering-foot"><span class="tiny-dot" aria-hidden="true"></span>Built in Go. Structured state in SQLite. Boundaries enforced by code.</div>
+      </div>
+    </section>
+
+    <section class="personal wrap section" aria-labelledby="personal-title">
+      <div class="section-heading"><p class="eyebrow">03 / Personal, by design</p><h2 id="personal-title">Close to your life.<br><em>Careful with its reach.</em></h2></div>
+      <div class="personal-content"><p class="personal-lead">Robin is built for one person, running on their own infrastructure. A continuous conversation, with your context behind it.</p><div class="personal-points"><article><h3>Your state stays yours.</h3><p>Mail, calendars, conversation and decision history live on your host. Model requests go to the configured vendor; self-hosted does not mean local-only inference.</p></article><article><h3>Reading isn’t permission to act.</h3><p>Mail triage runs in a fresh context with no tools. The conversation agent gets a restricted read bridge. Write actions belong to a separate, approval-gated actuator in the design.</p></article><article><h3>A reason you can come back to.</h3><p>Robin records how a decision was made. The audit view and replay tools let you inspect it, instead of guessing what the assistant was thinking.</p></article></div></div>
+    </section>
+
+    <section class="progress wrap" id="progress" aria-labelledby="progress-title">
+      <div><p class="eyebrow"><span class="tiny-dot" aria-hidden="true"></span>In active development</p><h2 id="progress-title">Taking shape.<br>One careful step at a time.</h2></div>
+      <div class="progress-details"><p>Robin is running with mail and calendar ingestion, read-only chat, shadow triage and an inspectable decision history.</p><p>Next: policy-driven notifications, digests, and orders that stay connected to their updates. Approved sending and broader assistance follow in later stages.</p><p class="progress-note">An early project, built in stages. Public installation instructions and downloads are still to come.</p></div>
+    </section>
+
+    <section class="closing wrap"><span class="closing-dot" aria-hidden="true"></span><p>A little more space<br>for <em>everything else.</em></p><a class="text-link" href="#main">Back to the beginning <span aria-hidden="true">↑</span></a></section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#" aria-label="Robin home">Robin<span class="brand-dot" aria-hidden="true"></span></a><p>A personal attention router.</p><span>robin.computer</span></footer>
+</body>
+</html>

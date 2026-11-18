@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8f4">
-  <meta name="description" content="Robin is a personal attention router. A self-hosted assistant that makes room for what matters, built in Go with qmail-inspired process isolation and OTP-inspired supervision through Suture.">
+  <meta name="description" content="Robin is a personal attention router. A self-hosted assistant being built to connect context across your mail, calendars and conversations, and notice what needs you before you have to ask.">
   <meta property="og:title" content="Robin — A personal attention router">
   <meta property="og:description" content="A little less noise. A lot more room. Meet Robin, a personal assistant built around your attention.">
   <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
     <a class="brand" href="#" aria-label="Robin home">Robin<span class="brand-dot" aria-hidden="true"></span></a>
     <nav aria-label="Main navigation">
       <a href="#idea">The idea</a>
-      <a href="#under-the-hood">Under the hood</a>
+      <a href="#connections">Connecting the dots</a>
       <a class="nav-status" href="#progress"><span aria-hidden="true"></span>In the making</a>
     </nav>
   </header>
@@ -29,7 +29,7 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="tiny-dot" aria-hidden="true"></span>A personal attention router</p>
         <h1 id="hero-title">A little less noise.<br>A lot more <em>room.</em></h1>
-        <p class="hero-description">Meet Robin. A personal assistant that sorts through what comes in, keeps the context, and helps you find what deserves your attention.</p>
+        <p class="hero-description">Meet Robin. A personal assistant being built to connect the dots across your mail, calendars and conversations, and notice what needs you before you have to ask.</p>
         <a class="button" href="#idea">Meet Robin <span aria-hidden="true">↘</span></a>
         <p class="hero-footnote">Your machine. Your context. Your attention.</p>
       </div>
@@ -70,7 +70,7 @@
     </section>
 
     <div class="intro-band">
-      <div class="wrap intro-line"><p>Attention is personal.<br><span>Your assistant should be, too.</span></p><p>Robin starts with mail and calendar, bringing them into one conversation. The goal is simple: fewer things to check, and a clearer sense of what needs you.</p></div>
+      <div class="wrap intro-line"><p>Attention is personal.<br><span>Your assistant should be, too.</span></p><p>A confirmation in Gmail. An update in Fastmail. A date on your calendar. Robin’s goal is to bring the pieces together, so you don’t have to keep the whole picture in your head.</p></div>
     </div>
 
     <section class="routing wrap section" id="idea" aria-labelledby="routing-title">
@@ -97,34 +97,65 @@
       <div class="routing-principles"><p><span>01</span><strong>Rules first.</strong> Use a model when judgement is needed.</p><p><span>02</span><strong>Uncertainty stays visible.</strong> It never becomes silent confidence.</p><p><span>03</span><strong>Keep the reason.</strong> Decisions can be inspected and replayed.</p></div>
     </section>
 
+    <section class="connections wrap section" id="connections" aria-labelledby="connections-title">
+      <div class="section-heading"><p class="eyebrow">02 / Connecting the dots</p><h2 id="connections-title">Your life doesn’t fit<br><em>inside one app.</em></h2><p>Robin is being built to follow a situation across providers, remember what should happen next, and speak up when something changes. Or when something expected never happens.</p></div>
+      <p class="scenario-note"><span class="tiny-dot" aria-hidden="true"></span>Illustrative scenarios · The proactive features we’re building toward</p>
+
+      <article class="scenario" aria-labelledby="parcel-title">
+        <div class="scenario-heading"><p class="micro-label">01 / Notice what’s missing</p><h3 id="parcel-title">The parcel that<br>went quiet.</h3><p>An order and its updates can land in different inboxes. The useful question is whether it’s actually getting to you.</p></div>
+        <div class="scenario-story">
+          <ul class="source-evidence" aria-label="Connected parcel evidence">
+            <li><span class="source-label">Gmail</span><span>Order confirmed. Delivery expected Tuesday.</span></li>
+            <li><span class="source-label">Fastmail</span><span>A carrier notice for the same tracking number.</span></li>
+            <li><span class="source-label">Time passes</span><span>Thursday arrives. No delivery or further update.</span></li>
+          </ul>
+          <div class="scenario-response"><span class="response-dot" aria-hidden="true"></span><div><p class="micro-label">Robin connects the order and follows up</p><blockquote>“Your parcel was due Tuesday. There’s been no delivery update. It may be worth checking with the merchant.”</blockquote></div></div>
+        </div>
+      </article>
+
+      <article class="scenario" aria-labelledby="meeting-title">
+        <div class="scenario-heading"><p class="micro-label">02 / Put context in reach</p><h3 id="meeting-title">The meeting with<br>a little history.</h3><p>A calendar knows when. Your conversations hold the rest. Bring them together while there’s still time to prepare.</p></div>
+        <div class="scenario-story">
+          <ul class="source-evidence" aria-label="Connected meeting evidence">
+            <li><span class="source-label">Google Calendar</span><span>A meeting with a supplier tomorrow at 09:00.</span></li>
+            <li><span class="source-label">Fastmail</span><span>The latest thread says the revised quote is still outstanding.</span></li>
+          </ul>
+          <div class="scenario-response"><span class="response-dot" aria-hidden="true"></span><div><p class="micro-label">Robin brings the context before the meeting</p><blockquote>“Ahead of your 09:00: you’re still waiting on the revised quote. Here’s the latest conversation.”</blockquote></div></div>
+        </div>
+      </article>
+
+      <article class="scenario" aria-labelledby="plan-title">
+        <div class="scenario-heading"><p class="micro-label">03 / Catch the mismatch</p><h3 id="plan-title">The plan changed.<br>Did the booking?</h3><p>Your latest instruction matters. So does the confirmation that still says something else. A small question now can save a surprise later.</p></div>
+        <div class="scenario-story">
+          <ul class="source-evidence" aria-label="Connected trip evidence">
+            <li><span class="source-label">Booking email</span><span>Your ski-pass confirmation says Saturday.</span></li>
+            <li><span class="source-label">Your conversation</span><span>“We’re going on Sunday instead.”</span></li>
+          </ul>
+          <div class="scenario-response"><span class="response-dot" aria-hidden="true"></span><div><p class="micro-label">Robin asks while there’s time to act</p><blockquote>“You said Sunday, but your ski pass says Saturday. Does the pass cover Sunday too?”</blockquote></div></div>
+        </div>
+      </article>
+      <p class="connections-footnote">Mail and calendar reads work today. These examples show the direction: proactive checks, meeting briefs and questions that connect the evidence, arriving in stages.</p>
+    </section>
+
     <section class="engineering" id="under-the-hood" aria-labelledby="engineering-title">
       <div class="wrap section">
-        <p class="eyebrow">02 / Good ideas have a lineage</p>
-        <div class="engineering-heading"><h2 id="engineering-title">Modern intelligence.<br><em>Old-school discipline.</em></h2><p>An assistant sits close to your life. Its process boundaries and recovery behaviour deserve as much thought as its personality.</p></div>
+        <p class="eyebrow">03 / Good ideas have a lineage</p>
+        <div class="engineering-heading"><h2 id="engineering-title">Modern intelligence.<br><em>Old-school discipline.</em></h2></div>
         <div class="lineage">
           <article class="lineage-item">
-            <div class="lineage-number">a / Separation</div>
-            <h3>Heavily inspired<br>by qmail.</h3>
-            <p>Small processes. Narrow responsibilities. Explicit handoffs. Robin borrows heavily from qmail’s approach to process operation and privilege separation.</p>
-            <p>Fetchers hold one account’s access. A confined parser handles untrusted content without credentials or a network. A store process owns the database. The model runner stays separate from mailbox credentials.</p>
-            <div class="process-flow" aria-label="Fetcher passes spool files to parser, then records to store"><span>fetcher</span><i aria-hidden="true">→</i><span>parser</span><i aria-hidden="true">→</i><span>store</span></div>
-            <a class="text-link" href="https://cr.yp.to/qmail.html">The qmail influence <span aria-hidden="true">↗</span></a>
+            <h3>qmail, for separation.</h3>
+            <p>Robin’s process design is heavily inspired by <a href="https://cr.yp.to/qmail.html">qmail</a>: small processes with narrow jobs and only the access they need. Keeping untrusted mail, credentials and model work apart helps limit what a failure or malicious message can reach.</p>
           </article>
           <article class="lineage-item">
-            <div class="lineage-number">b / Supervision</div>
-            <h3>Erlang’s OTP spirit.<br>Go, with Suture.</h3>
-            <p>Services fail. What matters is how they recover. Robin takes inspiration from Erlang/OTP’s supervision trees through Suture, pinned and vendored with its Go code.</p>
-            <p>Suture supervises service lifecycles. Robin keeps responsibility for process cleanup, readiness, restart delays and orderly shutdown. Recoverable workers restart independently; critical failures stop the group.</p>
-            <div class="supervision-tree" aria-label="Robin supervisor oversees the store, runner and pipeline"><span class="tree-root">supervisor</span><div><span>store</span><span>runner</span><span>pipeline</span></div></div>
-            <a class="text-link" href="https://github.com/thejerf/suture">Meet Suture <span aria-hidden="true">↗</span></a><a class="text-link second-link" href="https://www.erlang.org/doc/system/sup_princ.html">OTP supervision <span aria-hidden="true">↗</span></a>
+            <h3>OTP, for recovery.</h3>
+            <p>Robin takes inspiration from <a href="https://www.erlang.org/doc/system/sup_princ.html">Erlang’s OTP</a> through <a href="https://github.com/thejerf/suture">Suture</a>, bundled with its Go code. Supervised services can recover from failures, so a recoverable worker can restart without taking healthy neighbours with it. The benefit is an assistant built to keep going.</p>
           </article>
         </div>
-        <div class="engineering-foot"><span class="tiny-dot" aria-hidden="true"></span>Built in Go. Structured state in SQLite. Boundaries enforced by code.</div>
       </div>
     </section>
 
     <section class="personal wrap section" aria-labelledby="personal-title">
-      <div class="section-heading"><p class="eyebrow">03 / Personal, by design</p><h2 id="personal-title">Close to your life.<br><em>Careful with its reach.</em></h2></div>
+      <div class="section-heading"><p class="eyebrow">04 / Personal, by design</p><h2 id="personal-title">Close to your life.<br><em>Careful with its reach.</em></h2></div>
       <div class="personal-content"><p class="personal-lead">Robin is built for one person, running on their own infrastructure. A continuous conversation, with your context behind it.</p><div class="personal-points"><article><h3>Your state stays yours.</h3><p>Mail, calendars, conversation and decision history live on your host. Model requests go to the configured vendor; self-hosted does not mean local-only inference.</p></article><article><h3>Reading isn’t permission to act.</h3><p>Mail triage runs in a fresh context with no tools. The conversation agent gets a restricted read bridge. Write actions belong to a separate, approval-gated actuator in the design.</p></article><article><h3>A reason you can come back to.</h3><p>Robin records how a decision was made. The audit view and replay tools let you inspect it, instead of guessing what the assistant was thinking.</p></article></div></div>
     </section>
 

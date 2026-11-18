@@ -600,6 +600,122 @@ svg {
   margin-bottom:5px;
 }
 
+.connections {
+  padding-top:0;
+}
+
+.connections .section-heading>p:last-child {
+  max-width:530px;
+}
+
+.scenario-note {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:28px;
+  font-size:10px;
+  color:#5c6d53;
+}
+
+.scenario {
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  gap:10%;
+  padding-block:42px;
+  border-top:1px solid var(--line);
+}
+
+.scenario-note+.scenario {
+  margin-top:34px;
+}
+
+.scenario-heading .micro-label {
+  font-size:9px;
+  color:#5c6d53;
+}
+
+.scenario h3 {
+  font-size:32px;
+  line-height:1.2;
+  letter-spacing:-.9px;
+  margin-top:18px;
+}
+
+.scenario-heading>p:last-child {
+  font-size:13px;
+  color:var(--muted);
+  max-width:320px;
+  margin-top:18px;
+}
+
+.source-evidence {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.source-evidence li {
+  display:grid;
+  grid-template-columns:135px 1fr;
+  gap:18px;
+  align-items:baseline;
+  padding-block:12px;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+  line-height:1.7;
+  color:#5c6d53;
+}
+
+.source-evidence li:first-child {
+  padding-top:0;
+}
+
+.source-label {
+  font-size:10px;
+  color:var(--ink);
+  font-weight:550;
+}
+
+.scenario-response {
+  display:flex;
+  gap:14px;
+  background:#edf1e6;
+  border-radius:8px;
+  padding:23px;
+  margin-top:24px;
+}
+
+.response-dot {
+  width:8px;
+  height:8px;
+  flex-shrink:0;
+  background:var(--green);
+  border-radius:50%;
+  margin-top:3px;
+}
+
+.scenario-response .micro-label {
+  font-size:8px;
+  line-height:1.7;
+  letter-spacing:.7px;
+  color:#5c6d53;
+}
+
+.scenario-response blockquote {
+  margin:12px 0 0;
+  font-size:17px;
+  line-height:1.7;
+  letter-spacing:-.2px;
+}
+
+.connections-footnote {
+  border-top:1px solid var(--line);
+  padding-top:23px;
+  font-size:11px;
+  color:#5c6d53;
+  max-width:760px;
+}
+
 .engineering {
   background:#23392f;
   color:#e7edde;
@@ -625,10 +741,6 @@ svg {
 }
 
 .engineering-heading {
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  align-items:end;
-  gap:100px;
   margin-top:26px;
 }
 
@@ -640,12 +752,6 @@ svg {
 
 .engineering-heading h2 em {
   color:#acbfa1;
-}
-
-.engineering-heading>p {
-  font-size:14px;
-  color:#aab8a4;
-  max-width:340px;
 }
 
 .lineage {
@@ -660,52 +766,24 @@ svg {
   padding-top:26px;
 }
 
-.lineage-number {
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:10px;
-  letter-spacing:.5px;
-  color:#a3b199;
-}
-
 .lineage h3 {
-  font-size:32px;
+  font-size:26px;
   letter-spacing:-.8px;
   line-height:1.2;
-  margin:20px 0;
+  margin:0 0 15px;
+}
+
+.lineage p a {
+  color:#e7edde;
+  text-decoration:underline;
+  text-decoration-color:#8b9d7c;
+  text-underline-offset:4px;
 }
 
 .lineage p {
   font-size:13px;
   color:#b1bdab;
   line-height:1.85;
-}
-
-.lineage p+p {
-  margin-top:14px;
-}
-
-.process-flow {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:13px;
-  margin:34px 0 45px;
-  min-height:78px;
-}
-
-.process-flow span,.supervision-tree span {
-  border:1px solid #52634e;
-  background:#2a4033;
-  border-radius:4px;
-  padding:13px 17px;
-  font-size:11px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  color:#d2dfc6;
-}
-
-.process-flow i {
-  font-style:normal;
-  color:#8b9d7c;
 }
 
 .text-link {
@@ -720,78 +798,6 @@ svg {
 
 .text-link:hover {
   gap:27px;
-}
-
-.lineage .text-link {
-  color:#d7e3cc;
-  border-color:#738468;
-  font-size:11px;
-}
-
-.second-link {
-  margin-left:22px;
-}
-
-.supervision-tree {
-  margin:24px 0 31px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:30px;
-  position:relative;
-}
-
-.supervision-tree .tree-root {
-  padding:7px 17px;
-}
-
-.supervision-tree>div {
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  width:100%;
-  position:relative;
-}
-
-.supervision-tree::before {
-  content:"";
-  position:absolute;
-  height:30px;
-  width:1px;
-  top:29px;
-  background:#6a7f60;
-}
-
-.supervision-tree>div::before {
-  content:"";
-  position:absolute;
-  top:-15px;
-  left:12%;
-  right:12%;
-  height:15px;
-  border:1px solid #6a7f60;
-  border-bottom:0;
-  pointer-events:none;
-}
-
-.supervision-tree>div>span {
-  z-index:1;
-  padding:10px 16px;
-}
-
-.engineering-foot {
-  border-top:1px solid #455749;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:#a0b395;
-  font-size:11px;
-  margin-top:58px;
-  padding-top:26px;
-}
-
-.engineering-foot .tiny-dot {
-  background:#9cb487;
 }
 
 .personal-content {
@@ -1007,18 +1013,6 @@ svg {
   .result-top .micro-label {
     font-size:7px;
   }
-  .process-flow {
-    gap:9px;
-  }
-  .process-flow span {
-    padding:12px;
-  }
-  .supervision-tree>div {
-    gap:10px;
-  }
-  .supervision-tree>div>span {
-    padding:10px;
-  }
   .progress {
     padding:35px;
     gap:8%;
@@ -1026,6 +1020,40 @@ svg {
 }
 
 @media(max-width:760px) {
+  .connections {
+    padding-top:0;
+  }
+  .scenario {
+    grid-template-columns:1fr;
+    gap:27px;
+    padding-block:33px;
+  }
+  .scenario h3 {
+    font-size:29px;
+  }
+  .scenario-heading>p:last-child {
+    max-width:440px;
+  }
+  .source-evidence li {
+    grid-template-columns:100px 1fr;
+    gap:12px;
+    font-size:12px;
+  }
+  .source-label {
+    font-size:9px;
+  }
+  .scenario-response {
+    padding:20px;
+    gap:12px;
+  }
+  .scenario-response blockquote {
+    font-size:16px;
+  }
+  .scenario-note {
+    align-items:baseline;
+    line-height:1.7;
+    max-width:300px;
+  }
   .header {
     height:85px;
   }
@@ -1169,9 +1197,6 @@ svg {
     font-size:37px;
     letter-spacing:-1.4px;
   }
-  .engineering-heading>p {
-    max-width:420px;
-  }
   .lineage {
     grid-template-columns:1fr;
     gap:45px;
@@ -1182,26 +1207,6 @@ svg {
   }
   .lineage p {
     font-size:13px;
-  }
-  .process-flow {
-    max-width:410px;
-    margin:24px 0;
-  }
-  .process-flow span {
-    padding:13px 20px;
-  }
-  .supervision-tree {
-    max-width:410px;
-    margin-block:24px 30px;
-  }
-  .supervision-tree>div>span {
-    padding:10px 20px;
-  }
-  .engineering-foot {
-    font-size:10px;
-    line-height:1.8;
-    align-items:baseline;
-    margin-top:40px;
   }
   .personal-content {
     grid-template-columns:1fr;
@@ -1327,15 +1332,6 @@ svg {
   }
   .progress h2 {
     font-size:27px;
-  }
-  .supervision-tree>div>span {
-    padding:10px 14px;
-  }
-  .process-flow span {
-    padding:13px 16px;
-  }
-  .second-link {
-    margin-left:17px;
   }
   .closing>p {
     font-size:37px;

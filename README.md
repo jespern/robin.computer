@@ -11,6 +11,14 @@ illustration. Product examples are synthetic and labelled as illustrative.
 The progress section distinguishes today's shadow/read-only implementation
 from notifications, orders and approval-gated writes still to come.
 
+The second design pass brings proactive assistance and coordination across
+providers forward. Three synthetic scenarios show an overdue parcel linked
+across Gmail and Fastmail, a Google Calendar meeting brief drawing on Fastmail,
+and a changed trip plan conflicting with a booking confirmation. These are
+explicitly labelled as the direction being built toward, not live capabilities.
+The qmail and OTP/Suture influences are each a short paragraph about their
+benefit; the process diagrams and detailed lifecycle explanation were removed.
+
 Architecture copy follows Robin's `SPEC.md` and `deploy/suture-evaluation.md`:
 qmail-inspired process/privilege separation, and Erlang/OTP-inspired supervision
 through Suture, pinned and vendored in Go. Upstream references are linked on

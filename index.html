@@ -137,9 +137,37 @@
       <p class="connections-footnote">Mail and calendar reads work today. These examples show the direction: proactive checks, meeting briefs and questions that connect the evidence, arriving in stages.</p>
     </section>
 
+    <section class="integrations wrap section" id="sources" aria-labelledby="sources-title">
+      <div class="section-heading"><p class="eyebrow">03 / More of your world, connected</p><h2 id="sources-title">Different providers.<br><em>One picture.</em></h2><p>Mail, calendars, messages and the world outside. Each source adds context to the same assistant, so a change in one place can make sense of something in another.</p></div>
+      <div class="provider-list">
+        <article class="provider-row">
+          <div><p class="provider-status"><span class="tiny-dot" aria-hidden="true"></span>Connected today</p><h3>Mail &amp; calendars</h3><p>Personal and work accounts, considered together.</p></div>
+          <ul class="provider-names" aria-label="Current mail and calendar providers"><li>Gmail</li><li>Google Workspace</li><li>Fastmail</li></ul>
+        </article>
+        <article class="provider-row">
+          <div><p class="provider-status">Planned</p><h3>Traffic &amp; weather</h3><p>Travel times, forecasts and weather alerts, connected to your plans.</p></div>
+          <ul class="provider-names" aria-label="Planned traffic and weather sources"><li>Google Routes</li><li>Google Weather</li><li>Weather alerts</li></ul>
+        </article>
+        <article class="provider-row">
+          <div><p class="provider-status">Planned</p><h3>Messages &amp; channels</h3><p>Information sources that help Robin follow what matters across conversations.</p></div>
+          <ul class="provider-names" aria-label="Planned messaging information sources"><li>Slack</li><li>Telegram</li><li>WhatsApp</li></ul>
+        </article>
+      </div>
+      <div class="source-example"><p class="micro-label">The pieces work together</p><p>A meeting on your calendar. A changed address in a message. Traffic on the way, and rain in the forecast. Robin’s goal is to bring you the useful answer: <strong>when to leave, where to go, and what to prepare for.</strong></p></div>
+    </section>
+
+    <section class="voice wrap section" id="phone" aria-labelledby="voice-title">
+      <div class="voice-heading"><div class="section-heading"><p class="eyebrow">04 / A familiar way to talk</p><h2 id="voice-title">Call Robin.<br><em>Or let Robin call.</em></h2><p>A personal assistant should be a conversation away. Ask a question, give an instruction, or hand over the call you’ve been putting off.</p></div><p class="voice-status"><span class="tiny-dot" aria-hidden="true"></span>Phone capabilities · On the roadmap</p></div>
+      <div class="voice-directions">
+        <article class="voice-direction"><p class="micro-label"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m7 3 3 5-2 2c1 3 3 5 6 6l2-2 5 3c0 3-2 5-5 4C8 19 5 16 3 8 2 5 4 3 7 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>You → Robin</p><h3>Your assistant, on the line.</h3><p>Call Robin to ask questions about your day, catch up on what changed, or give instructions by voice. The same context as your chat, wherever you’re calling from.</p><blockquote>“What do I need to know before my next meeting?”</blockquote></article>
+        <article class="voice-direction"><p class="micro-label"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m7 3 3 5-2 2c1 3 3 5 6 6l2-2 5 3c0 3-2 5-5 4C8 19 5 16 3 8 2 5 4 3 7 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Robin → On your behalf</p><h3>Let Robin handle the call.</h3><p>Make a reservation, arrange an appointment or get an answer. You approve who to call, the goal and the limits; Robin makes the call on your behalf and brings back the outcome.</p><blockquote>“Call the restaurant and book a table for two, around eight.”</blockquote></article>
+      </div>
+      <p class="voice-footnote">One continuous conversation, whether you type or call.</p>
+    </section>
+
     <section class="engineering" id="under-the-hood" aria-labelledby="engineering-title">
       <div class="wrap section">
-        <p class="eyebrow">03 / Good ideas have a lineage</p>
+        <p class="eyebrow">05 / Good ideas have a lineage</p>
         <div class="engineering-heading"><h2 id="engineering-title">Modern intelligence.<br><em>Old-school discipline.</em></h2></div>
         <div class="lineage">
           <article class="lineage-item">
@@ -155,13 +183,13 @@
     </section>
 
     <section class="personal wrap section" aria-labelledby="personal-title">
-      <div class="section-heading"><p class="eyebrow">04 / Personal, by design</p><h2 id="personal-title">Close to your life.<br><em>Careful with its reach.</em></h2></div>
+      <div class="section-heading"><p class="eyebrow">06 / Personal, by design</p><h2 id="personal-title">Close to your life.<br><em>Careful with its reach.</em></h2></div>
       <div class="personal-content"><p class="personal-lead">Robin is built for one person, running on their own infrastructure. A continuous conversation, with your context behind it.</p><div class="personal-points"><article><h3>Your state stays yours.</h3><p>Mail, calendars, conversation and decision history live on your host. Model requests go to the configured vendor; self-hosted does not mean local-only inference.</p></article><article><h3>Reading isn’t permission to act.</h3><p>Mail triage runs in a fresh context with no tools. The conversation agent gets a restricted read bridge. Write actions belong to a separate, approval-gated actuator in the design.</p></article><article><h3>A reason you can come back to.</h3><p>Robin records how a decision was made. The audit view and replay tools let you inspect it, instead of guessing what the assistant was thinking.</p></article></div></div>
     </section>
 
     <section class="progress wrap" id="progress" aria-labelledby="progress-title">
       <div><p class="eyebrow"><span class="tiny-dot" aria-hidden="true"></span>In active development</p><h2 id="progress-title">Taking shape.<br>One careful step at a time.</h2></div>
-      <div class="progress-details"><p>Robin is running with mail and calendar ingestion, read-only chat, shadow triage and an inspectable decision history.</p><p>Next: policy-driven notifications, digests, and orders that stay connected to their updates. Approved sending and broader assistance follow in later stages.</p><p class="progress-note">An early project, built in stages. Public installation instructions and downloads are still to come.</p></div>
+      <div class="progress-details"><p>Robin is running with Gmail, Google Workspace and Fastmail, mail and calendar ingestion, read-only chat, shadow triage and an inspectable decision history.</p><p>Next: policy-driven notifications, digests, and orders that stay connected to their updates. Phone calls, traffic, weather and messaging sources are part of the longer-term direction.</p><p class="progress-note">An early project, built in stages. Public installation instructions and downloads are still to come.</p></div>
     </section>
 
     <section class="closing wrap"><span class="closing-dot" aria-hidden="true"></span><p>A little more space<br>for <em>everything else.</em></p><a class="text-link" href="#main">Back to the beginning <span aria-hidden="true">↑</span></a></section>

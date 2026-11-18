@@ -86,9 +86,11 @@ try {
       await writeFile(join(artifacts, `${width}-full.png`), Buffer.from(data, 'base64'));
       const hero = await call('Page.captureScreenshot', { format: 'png' });
       await writeFile(join(artifacts, `${width}-hero.png`), Buffer.from(hero.data, 'base64'));
-      const region = await evaluate(`(() => {const r=document.getElementById('connections').getBoundingClientRect();return {y:r.top+scrollY,height:r.height}})()`);
-      const connections = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: region.y, width, height: region.height, scale: 1 } });
-      await writeFile(join(artifacts, `${width}-connections.png`), Buffer.from(connections.data, 'base64'));
+      for (const section of ['connections', 'sources', 'phone']) {
+        const region = await evaluate(`(() => {const r=document.getElementById('${section}').getBoundingClientRect();return {y:r.top+scrollY,height:r.height}})()`);
+        const shot = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: region.y, width, height: region.height, scale: 1 } });
+        await writeFile(join(artifacts, `${width}-${section}.png`), Buffer.from(shot.data, 'base64'));
+      }
     }
   }
   await evaluate(`document.querySelector('[data-example="invoice"]').focus()`);

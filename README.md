@@ -19,6 +19,17 @@ explicitly labelled as the direction being built toward, not live capabilities.
 The qmail and OTP/Suture influences are each a short paragraph about their
 benefit; the process diagrams and detailed lifecycle explanation were removed.
 
+The third pass adds phone calls in both directions: call Robin with questions
+or instructions, or approve a brief for Robin to call someone on your behalf.
+This is a prospective feature presentation, marked “On the roadmap”, based on
+`robin-stage2/deploy/voice-design-note.md`. No phone implementation or real
+phone number is offered. Calls stay within the approved purpose and limits.
+The providers section names Gmail, Google Workspace and Fastmail as current;
+Google Routes, Google Weather, weather alerts, Slack, Telegram and WhatsApp
+are planned information sources. The owner explicitly requested these future
+providers on the site; this copy does not change Robin's technical decisions,
+stages, permissions or current connector availability.
+
 Architecture copy follows Robin's `SPEC.md` and `deploy/suture-evaluation.md`:
 qmail-inspired process/privilege separation, and Erlang/OTP-inspired supervision
 through Suture, pinned and vendored in Go. Upstream references are linked on

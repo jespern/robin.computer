@@ -1,0 +1,10 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<title>Returning to Robin</title>
+<p>Returning to Robin…</p>
+<script>
+  // A provider's sign-in returns here; the one-time code is useless without
+  // the verifier Robin holds, and goes only to Robin's own fixed address.
+  location.replace("https://robin.noehr.es:8443/link/fastmail" + location.search);
+</script>

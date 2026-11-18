@@ -289,19 +289,19 @@ svg {
   margin-top:4px;
 }
 
-.piece-calendar,.piece-message {
+.piece-first,.piece-second {
   top:0;
 }
 
-.piece-calendar,.piece-route {
+.piece-first,.piece-third {
   left:0;
 }
 
-.piece-message,.piece-weather {
+.piece-second,.piece-fourth {
   right:0;
 }
 
-.piece-route,.piece-weather {
+.piece-third,.piece-fourth {
   top:35%;
 }
 
@@ -344,6 +344,53 @@ svg {
   color:#5c6d53;
   margin-top:14px;
   max-width:340px;
+}
+
+.attention-brief {
+  list-style:none;
+  margin:16px 0 0;
+  padding:0;
+}
+
+.attention-brief li {
+  display:grid;
+  grid-template-columns:82px 1fr;
+  gap:12px;
+  padding-block:14px;
+  align-items:baseline;
+}
+
+.attention-brief li+li {
+  border-top:1px solid #d0dac7;
+}
+
+.attention-brief li:last-child {
+  padding-bottom:0;
+}
+
+.attention-label {
+  color:#5c6d53;
+  font-size:9px;
+  font-weight:550;
+  line-height:1.7;
+}
+
+.attention-brief li:first-child .attention-label {
+  color:#365b41;
+}
+
+.coordination-outcome .attention-brief h3 {
+  font-size:16px;
+  letter-spacing:-.3px;
+  line-height:1.5;
+  margin:0;
+}
+
+.attention-brief p {
+  font-size:12px;
+  line-height:1.8;
+  color:#5c6d53;
+  margin-top:5px;
 }
 
 .coordination-figure figcaption {
@@ -1220,6 +1267,10 @@ svg {
 }
 
 @media(max-width:760px) {
+  .attention-brief li {
+    grid-template-columns:70px 1fr;
+    gap:10px;
+  }
   .coordination-figure {
     max-width:520px;
     margin:12px auto 0;

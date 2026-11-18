@@ -37,6 +37,13 @@ identifies the illustration and planned capabilities. Coordination scenarios
 now precede the mail-routing demo; the demo remains further down the page.
 Provider marks are hosted locally with provenance in `assets/providers/`.
 
+The fifth pass unifies that opening with mail attention: “What matters.
+All connected.” Gmail, Fastmail, Calendar and Slack feed one illustrative
+attention brief with an email to read/reply to, a meeting change and an overdue
+parcel. It balances immediate attention with proactive coordination. The first
+fuller scenario now starts with a person's email and the context for a reply,
+rather than leading with meeting preparation alone.
+
 Architecture copy follows Robin's `SPEC.md` and `deploy/suture-evaluation.md`:
 qmail-inspired process/privilege separation, and Erlang/OTP-inspired supervision
 through Suture, pinned and vendored in Go. Upstream references are linked on

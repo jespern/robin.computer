@@ -1,0 +1,355 @@
+{
+  "format": 1,
+  "generated": "2026-11-21T10:26:29Z",
+  "addons": [
+    {
+      "name": "robin",
+      "title": "Robin",
+      "summary": "Robin's own knowledge: your mail, calendar, people, facts, open loops and its decisions. Always on.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "always_on": true,
+      "tools": [
+        {
+          "name": "search",
+          "description": "Search everything Robin holds: mail and calendar events across accounts and providers, people (kind:person: name, addresses, relationship and your notes), and your earlier conversation with Robin (kind:chat), offline and fast; best match first, recent first among equals."
+        },
+        {
+          "name": "read_thread",
+          "description": "Read one local thread by its Robin thread_id."
+        },
+        {
+          "name": "get_message",
+          "description": "Read one local message by Robin message_id, including available capped plain text."
+        },
+        {
+          "name": "query_calendar",
+          "description": "Read local occurrences between from and to (dates and times; without an offset they are the owner's local time), maximum 90 days."
+        },
+        {
+          "name": "explain_decision",
+          "description": "Read a recorded decision and provenance for one Robin message_id."
+        },
+        {
+          "name": "facts",
+          "description": "Read the owner's facts: typed key-value pairs such as passport.expiry or passport.issuing_country, with where each came from."
+        },
+        {
+          "name": "query_loops",
+          "description": "List open loops: requests the owner sent and waits on (kind waiting), replies the owner owes (owed) and promises the owner made (promised), each with the other side, what was asked, since when, topics such as passport_renewal, when Robin follows it up and whether that is overdue."
+        },
+        {
+          "name": "propose_fact",
+          "description": "Propose saving one fact about the owner, such as passport.expiry 2028-06-14, when the owner states it or you read it in their mail."
+        },
+        {
+          "name": "schedule_reminder",
+          "description": "Remind the owner of something later, once or on a repeat: a push and a card in Chat at that time, with Done and Snooze."
+        },
+        {
+          "name": "schedule_task",
+          "description": "Have Robin do something later or on a schedule, when the owner asks for that (\"every Monday morning, check …\", \"tomorrow at 8, look up …\"): at each time Robin runs a turn of its own with instruction as what to do, using its read tools, and its answer appears in Chat with a push."
+        },
+        {
+          "name": "list_reminders",
+          "description": "List the owner's reminders and scheduled tasks still to come (and with include_finished, recent done and cancelled ones): id, text, the schedule in words, state (active, paused, fired: waiting for Done) and next times."
+        },
+        {
+          "name": "cancel_reminder",
+          "description": "Cancel one of the owner's reminders by its id from list_reminders, when the owner asks."
+        },
+        {
+          "name": "find_person",
+          "description": "Find people the owner deals with by name, email address, relationship or part of any: each with the owner's name for them, relationship and notes, their addresses, first and last contact, how many mails and calendar events they appear in, and recent threads (use read_thread)."
+        },
+        {
+          "name": "propose_person",
+          "description": "Propose a change to a person for the owner to save: their name, relationship (e.g."
+        }
+      ]
+    },
+    {
+      "name": "fastmail",
+      "title": "Fastmail",
+      "summary": "Fastmail mail and calendars: connect accounts in Settings, read on arrival, open messages as HTML.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "always_on": true,
+      "tools": null,
+      "egress": [
+        "api.fastmail.com:443",
+        "caldav.fastmail.com:443"
+      ]
+    },
+    {
+      "name": "google",
+      "title": "Google",
+      "summary": "Gmail and Google Calendar: connect accounts in Settings, read on arrival, open messages as HTML.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "always_on": true,
+      "tools": null,
+      "egress": [
+        "calendar.google.com:443",
+        "gmail.googleapis.com:443",
+        "imap.gmail.com:993",
+        "www.googleapis.com:443"
+      ]
+    },
+    {
+      "name": "orders",
+      "title": "Orders and parcels",
+      "summary": "Orders and parcels from your mail: what you bought, where it is, and deliveries that went wrong.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "tools": null
+    },
+    {
+      "name": "maps",
+      "title": "Maps",
+      "summary": "Travel times with traffic, and places you mention: address, phone, website and opening hours.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "tools": [
+        {
+          "name": "travel_time",
+          "description": "Travel time between two places from Google Maps, with predicted traffic when driving: for planning a trip, a school run or when to leave."
+        },
+        {
+          "name": "find_place",
+          "description": "Look up a place on Google Maps, such as a restaurant, venue, shop or school the owner mentions: name, address, phone, website, opening hours, whether it is open now and its status (closed for good, temporarily closed)."
+        }
+      ],
+      "egress": [
+        "routes.googleapis.com:443",
+        "places.googleapis.com:443",
+        "maps.googleapis.com:443"
+      ],
+      "secrets": [
+        "google-maps-key"
+      ],
+      "limits": [
+        {
+          "name": "routes",
+          "description": "route requests a month",
+          "default": 500
+        },
+        {
+          "name": "places",
+          "description": "place lookups a month",
+          "default": 250
+        },
+        {
+          "name": "maps",
+          "description": "map images a month",
+          "default": 100
+        }
+      ],
+      "resources": {
+        "memory_mb": 128,
+        "cpus": 1,
+        "pids": 32
+      }
+    },
+    {
+      "name": "phone",
+      "title": "Phone",
+      "summary": "Robin's phone line: call Robin from an allowed number, and Robin places calls for you. Every call is in Calls.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "tools": [
+        {
+          "name": "propose_call",
+          "description": "Propose a phone call Robin places for the owner, for example to book a table or ask a business a question."
+        },
+        {
+          "name": "propose_calls",
+          "description": "Propose 2 to 10 calls for one errand together (for example asking several shops the same question): each item is a propose_call brief."
+        },
+        {
+          "name": "propose_text",
+          "description": "Propose a text (SMS) Robin sends for the owner from one of Robin's US numbers."
+        },
+        {
+          "name": "recent_texts",
+          "description": "Text conversations on Robin's numbers, newest first: the other number, which of Robin's numbers, the latest text and how many are unread."
+        },
+        {
+          "name": "read_texts",
+          "description": "One text conversation by number from recent_texts: the texts both ways, oldest first, with what Robin sent and whether it went."
+        },
+        {
+          "name": "recent_calls",
+          "description": "The calls Robin answered or placed, newest first: who, when, how long, how it ended and, for calls Robin placed, the result."
+        },
+        {
+          "name": "read_call",
+          "description": "One call by call_id from recent_calls: its summary, what was agreed, follow-ups, the brief it was placed from, and the transcript."
+        }
+      ],
+      "egress": [
+        "api.openai.com:443"
+      ],
+      "secrets": [
+        "openai-key",
+        "sip-password"
+      ],
+      "limits": [
+        {
+          "name": "outbound_minutes",
+          "description": "minutes of calls Robin places a month",
+          "default": 60
+        },
+        {
+          "name": "practice_minutes",
+          "description": "voice minutes of practice calls a month (both sides count)",
+          "default": 300
+        }
+      ]
+    },
+    {
+      "name": "research",
+      "title": "Research",
+      "summary": "Answers from the web: Robin searches with the terms you approve and reads the pages for you.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "reach": "The web, through the model vendor's search, with the search terms you approve",
+      "tools": [
+        {
+          "name": "research",
+          "description": "Look the owner's question up on the web: a separate researcher with web search and a browser reads current pages and returns an answer with its sources."
+        }
+      ]
+    },
+    {
+      "name": "browser",
+      "title": "Browser",
+      "summary": "A confined browser for research and errands Robin runs for you; never used from chat directly.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "tools": [
+        {
+          "name": "browser_open",
+          "description": "Open an http or https address in this run's browser and read its first part."
+        },
+        {
+          "name": "browser_read",
+          "description": "Read the current page again, or a later part of it (part 2, 3, …)."
+        },
+        {
+          "name": "browser_click",
+          "description": "Click element n from the last read, then read the page it leads to."
+        },
+        {
+          "name": "browser_type",
+          "description": "Type text into text field n from the last read, replacing what is there; submit presses Enter."
+        },
+        {
+          "name": "browser_select",
+          "description": "Choose an option, by its visible text, in list n from the last read."
+        },
+        {
+          "name": "browser_back",
+          "description": "Go back to the previous page and read it."
+        }
+      ],
+      "egress": [
+        "api.browser-use.com:443",
+        "*.cdp.browser-use.com:443"
+      ],
+      "secrets": [
+        "browser-use-key"
+      ],
+      "limits": [
+        {
+          "name": "actions",
+          "description": "browser actions a month",
+          "default": 1000
+        }
+      ],
+      "resources": {
+        "memory_mb": 128,
+        "cpus": 1,
+        "pids": 32
+      }
+    },
+    {
+      "name": "images",
+      "title": "Remote images in mail",
+      "summary": "Loads a message's remote images when you ask, and senders' logos, fetched by Robin, never by your browser.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "reach": "Any public website, for the images a message shows and senders' logos only",
+      "tools": [
+        {
+          "name": "fetch_image",
+          "description": "One remote image an email shows, fetched over https without cookies or referrer."
+        },
+        {
+          "name": "fetch_logo",
+          "description": "One brand logo (an SVG) a sender's domain publishes for BIMI, fetched over https without cookies or referrer."
+        },
+        {
+          "name": "find_icon",
+          "description": "The icon a sender's site declares on its homepage (\u003clink rel=\"icon\"\u003e), as a URL only."
+        }
+      ],
+      "egress": [
+        "*:443"
+      ],
+      "limits": [
+        {
+          "name": "images",
+          "description": "images a month",
+          "default": 20000
+        }
+      ],
+      "resources": {
+        "memory_mb": 128,
+        "cpus": 1,
+        "pids": 32
+      }
+    },
+    {
+      "name": "jev",
+      "title": "Jev (TypeSafe)",
+      "summary": "Jev, a fast mail reader that decides most messages first, with Claude where it matters.",
+      "publisher": "Robin",
+      "verified": true,
+      "builtin": true,
+      "tools": [
+        {
+          "name": "jev_decide",
+          "description": "One decision from TypeSafe's Jev: answers to the given questions about state, with probabilities."
+        }
+      ],
+      "egress": [
+        "api.typesafe.ai:443"
+      ],
+      "secrets": [
+        "typesafe-api-key"
+      ],
+      "limits": [
+        {
+          "name": "decisions",
+          "description": "decisions a month",
+          "default": 100000
+        }
+      ],
+      "resources": {
+        "memory_mb": 128,
+        "cpus": 1,
+        "pids": 32
+      }
+    }
+  ]
+}

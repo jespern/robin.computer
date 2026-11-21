@@ -15,7 +15,7 @@ const artifacts = resolve(process.env.ROBIN_SCREENSHOTS || join(tmpdir(), 'robin
 const profile = await mkdtemp(join(tmpdir(), 'robin-landing-chrome-'));
 const server = createServer(async (req, res) => {
   const pathname = new URL(req.url, 'http://fixture').pathname;
-  const path = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+  const path = resolve(root, '.' + (pathname.endsWith('/') ? pathname + 'index.html' : pathname));
   if (!path.startsWith(root + '/')) { res.writeHead(404).end(); return; }
   try {
     const bytes = await readFile(path);
@@ -66,6 +66,25 @@ try {
     if (result.exceptionDetails) throw Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
     return result.result.value;
   };
+  const contrastCheck = `(() => {
+    const rgb = value => (value.match(/[\\d.]+/g) || []).map(Number);
+    const luminance = channels => channels.slice(0,3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((n,v,i) => n + v * [.2126,.7152,.0722][i], 0);
+    return Array.from(document.body.querySelectorAll('*')).filter(el => !el.closest('[aria-hidden="true"],svg,script,style') && Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim())).flatMap(el => {
+      const style = getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden') return [];
+      let ancestor = el, background;
+      while (ancestor) {
+        const candidate = rgb(getComputedStyle(ancestor).backgroundColor);
+        if (candidate.length === 3 || candidate[3] === 1) { background = candidate; break; }
+        ancestor = ancestor.parentElement;
+      }
+      if (!background) return [];
+      const values = [luminance(rgb(style.color)), luminance(background)].sort((a,b) => a-b);
+      const ratio = (values[1]+.05)/(values[0]+.05);
+      const large = parseFloat(style.fontSize) >= 24 || (parseFloat(style.fontSize) >= 18.67 && parseFloat(style.fontWeight) >= 700);
+      return ratio + .01 < (large ? 3 : 4.5) ? [{text:el.textContent.trim().slice(0,45),color:style.color,ratio:Math.round(ratio*100)/100}] : [];
+    });
+  })()`;
   await call('Page.enable'); await call('Runtime.enable'); await call('Network.enable');
   await mkdir(artifacts, { recursive: true });
   for (const width of [320, 390, 768, 1024, 1440, 1920]) {
@@ -95,29 +114,33 @@ try {
       }
     }
   }
+  // The add-ons directory (/addons/), generated from the signed index.
+  for (const width of [320, 390, 768, 1440]) {
+    await call('Emulation.setDeviceMetricsOverride', { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    await call('Page.navigate', { url: base + '/addons/' });
+    await evaluate(`new Promise(resolve=>{if(document.readyState==='complete')resolve();else addEventListener('load',resolve,{once:true})})`);
+    assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true, `add-ons: horizontal overflow at ${width}px`);
+    assert.equal(await evaluate(`document.querySelectorAll('.addon-card').length > 0 && Array.from(document.querySelectorAll('.addon-card')).every(c=>c.querySelector('h3')&&c.querySelector('dl'))`), true, 'add-ons: cards missing');
+    assert.equal(await evaluate(`!!document.querySelector('a[href="/addons/index.json"]')`), true, 'add-ons: no link to the index');
+    assert.deepEqual(await evaluate(contrastCheck), [], `add-ons: text contrast below WCAG AA at ${width}px`);
+    if ([390, 1440].includes(width)) {
+      const { data } = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width, height: await evaluate('document.documentElement.scrollHeight'), scale: 1 } });
+      await writeFile(join(artifacts, `${width}-addons.png`), Buffer.from(data, 'base64'));
+    }
+  }
+  await call('Emulation.setScriptExecutionDisabled', { value: true });
+  await call('Page.reload');
+  await evaluate(`new Promise(resolve=>{if(document.readyState==='complete')resolve();else addEventListener('load',resolve,{once:true})})`);
+  assert.equal(await evaluate(`document.querySelectorAll('.addon-card').length > 0`), true, 'add-ons: unreadable without JS');
+  await call('Emulation.setScriptExecutionDisabled', { value: false });
+  await call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await call('Page.navigate', { url: base });
+  await evaluate(`new Promise(resolve=>{if(document.readyState==='complete')resolve();else addEventListener('load',resolve,{once:true})})`);
   await evaluate(`document.querySelector('[data-example="invoice"]').focus()`);
   for (const type of ['keyDown', 'keyUp']) await call('Input.dispatchKeyEvent', { type, key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, ...(type === 'keyDown' ? { text: '\r' } : {}) });
   assert.equal(await evaluate(`document.querySelector('[data-route].active').dataset.route`), 'batch', 'Enter does not activate example');
   assert.equal(await evaluate(`document.activeElement.dataset.example`), 'invoice', 'selection moved keyboard focus');
-  const contrastFailures = await evaluate(`(() => {
-    const rgb = value => (value.match(/[\\d.]+/g) || []).map(Number);
-    const luminance = channels => channels.slice(0,3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((n,v,i) => n + v * [.2126,.7152,.0722][i], 0);
-    return Array.from(document.body.querySelectorAll('*')).filter(el => !el.closest('[aria-hidden="true"],svg,script,style') && Array.from(el.childNodes).some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim())).flatMap(el => {
-      const style = getComputedStyle(el);
-      if (style.display === 'none' || style.visibility === 'hidden') return [];
-      let ancestor = el, background;
-      while (ancestor) {
-        const candidate = rgb(getComputedStyle(ancestor).backgroundColor);
-        if (candidate.length === 3 || candidate[3] === 1) { background = candidate; break; }
-        ancestor = ancestor.parentElement;
-      }
-      if (!background) return [];
-      const values = [luminance(rgb(style.color)), luminance(background)].sort((a,b) => a-b);
-      const ratio = (values[1]+.05)/(values[0]+.05);
-      const large = parseFloat(style.fontSize) >= 24 || (parseFloat(style.fontSize) >= 18.67 && parseFloat(style.fontWeight) >= 700);
-      return ratio + .01 < (large ? 3 : 4.5) ? [{text:el.textContent.trim().slice(0,45),color:style.color,ratio:Math.round(ratio*100)/100}] : [];
-    });
-  })()`);
+  const contrastFailures = await evaluate(contrastCheck);
   assert.deepEqual(contrastFailures, [], 'text contrast below WCAG AA');
   await call('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
   assert.equal(await evaluate('getComputedStyle(document.documentElement).scrollBehavior'), 'auto');
@@ -131,7 +154,7 @@ try {
   assert.deepEqual(errors, [], 'browser exceptions');
   assert.deepEqual(failedRequests, [], 'failed assets');
   assert.deepEqual(requests.filter(url => /^https?:/.test(url) && new URL(url).origin !== base), [], 'external resource request');
-  console.log('Chrome passed: 6 viewport sizes, all routing examples, keyboard, text contrast, reduced motion, readable without JS, section links and no remote loads.');
+  console.log('Chrome passed: 6 viewport sizes, the add-ons directory at 4, all routing examples, keyboard, text contrast, reduced motion, readable without JS, section links and no remote loads.');
   console.log('Screenshots: ' + artifacts);
 } finally {
   if (browser) {

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="Add-ons for Robin: what each can do, what it can reach, the keys it needs and the memory and CPU it may use.">
+  <title>Add-ons — Robin</title>
+  <link rel="icon" href="/assets/robin.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="brand" href="/" aria-label="Robin home">Robin<span class="brand-dot" aria-hidden="true"></span></a>
+    <nav aria-label="Main navigation">
+      <a href="/#connections">How it helps</a>
+      <a href="/#sources">Your sources</a>
+      <a href="/addons/" aria-current="page">Add-ons</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="section wrap addons" aria-labelledby="addons-title">
+      <div class="section-heading"><p class="eyebrow">Add-ons</p><h2 id="addons-title">Pick what Robin<br><em>can do for you.</em></h2><p>Each add-on says what it can reach, the keys it needs, how often it may be used and the memory and CPU it may use. Robin enforces all of it. Built-in add-ons come with Robin; switch them on in the app. The others install from this list, in the app under Add-ons or from the terminal, after you review exactly what they may do.</p></div>
+      <ul class="addon-grid">
+        <li class="addon-card" id="robin">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Robin</h3>
+          <p>Robin&#39;s own knowledge: your mail, calendar, people, facts, open loops and its decisions. Always on.</p>
+          <dl>
+            <dt>Can reach</dt><dd>Nothing outside your machine</dd>
+            
+            
+            
+            
+          </dl>
+          <details><summary>14 tools</summary><ul><li><code>search</code> Search everything Robin holds: mail and calendar events across accounts and providers, people (kind:person: name, addresses, relationship and your notes), and your earlier conversation with Robin (kind:chat), offline and fast; best match first, recent first among equals.</li><li><code>read_thread</code> Read one local thread by its Robin thread_id.</li><li><code>get_message</code> Read one local message by Robin message_id, including available capped plain text.</li><li><code>query_calendar</code> Read local occurrences between from and to (dates and times; without an offset they are the owner&#39;s local time), maximum 90 days.</li><li><code>explain_decision</code> Read a recorded decision and provenance for one Robin message_id.</li><li><code>facts</code> Read the owner&#39;s facts: typed key-value pairs such as passport.expiry or passport.issuing_country, with where each came from.</li><li><code>query_loops</code> List open loops: requests the owner sent and waits on (kind waiting), replies the owner owes (owed) and promises the owner made (promised), each with the other side, what was asked, since when, topics such as passport_renewal, when Robin follows it up and whether that is overdue.</li><li><code>propose_fact</code> Propose saving one fact about the owner, such as passport.expiry 2028-06-14, when the owner states it or you read it in their mail.</li><li><code>schedule_reminder</code> Remind the owner of something later, once or on a repeat: a push and a card in Chat at that time, with Done and Snooze.</li><li><code>schedule_task</code> Have Robin do something later or on a schedule, when the owner asks for that (&#34;every Monday morning, check …&#34;, &#34;tomorrow at 8, look up …&#34;): at each time Robin runs a turn of its own with instruction as what to do, using its read tools, and its answer appears in Chat with a push.</li><li><code>list_reminders</code> List the owner&#39;s reminders and scheduled tasks still to come (and with include_finished, recent done and cancelled ones): id, text, the schedule in words, state (active, paused, fired: waiting for Done) and next times.</li><li><code>cancel_reminder</code> Cancel one of the owner&#39;s reminders by its id from list_reminders, when the owner asks.</li><li><code>find_person</code> Find people the owner deals with by name, email address, relationship or part of any: each with the owner&#39;s name for them, relationship and notes, their addresses, first and last contact, how many mails and calendar events they appear in, and recent threads (use read_thread).</li><li><code>propose_person</code> Propose a change to a person for the owner to save: their name, relationship (e.g.</li></ul></details>
+          <p class="addon-install">Always on in Robin.</p>
+          
+        </li>
+        <li class="addon-card" id="fastmail">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Fastmail</h3>
+          <p>Fastmail mail and calendars: connect accounts in Settings, read on arrival, open messages as HTML.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>api.fastmail.com</code>, <code>caldav.fastmail.com</code></dd>
+            
+            
+            
+            
+          </dl>
+          
+          <p class="addon-install">Always on in Robin.</p>
+          
+        </li>
+        <li class="addon-card" id="google">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Google</h3>
+          <p>Gmail and Google Calendar: connect accounts in Settings, read on arrival, open messages as HTML.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>calendar.google.com</code>, <code>gmail.googleapis.com</code>, <code>imap.gmail.com:993</code>, <code>www.googleapis.com</code></dd>
+            
+            
+            
+            
+          </dl>
+          
+          <p class="addon-install">Always on in Robin.</p>
+          
+        </li>
+        <li class="addon-card" id="orders">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Orders and parcels</h3>
+          <p>Orders and parcels from your mail: what you bought, where it is, and deliveries that went wrong.</p>
+          <dl>
+            <dt>Can reach</dt><dd>Nothing outside your machine</dd>
+            
+            
+            
+            
+          </dl>
+          
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="maps">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Maps</h3>
+          <p>Travel times with traffic, and places you mention: address, phone, website and opening hours.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>routes.googleapis.com</code>, <code>places.googleapis.com</code>, <code>maps.googleapis.com</code></dd>
+            <dt>Needs</dt><dd>Google maps key</dd>
+            
+            <dt>Monthly limits</dt><dd>Route requests: 500 a month; Place lookups: 250 a month; Map images: 100 a month, yours to change</dd>
+            <dt>Runs with</dt><dd>128 MB memory · 1 CPU · up to 32 processes</dd>
+          </dl>
+          <details><summary>2 tools</summary><ul><li><code>travel_time</code> Travel time between two places from Google Maps, with predicted traffic when driving: for planning a trip, a school run or when to leave.</li><li><code>find_place</code> Look up a place on Google Maps, such as a restaurant, venue, shop or school the owner mentions: name, address, phone, website, opening hours, whether it is open now and its status (closed for good, temporarily closed).</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="phone">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Phone</h3>
+          <p>Robin&#39;s phone line: call Robin from an allowed number, and Robin places calls for you. Every call is in Calls.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>api.openai.com</code></dd>
+            <dt>Needs</dt><dd>OpenAI key, SIP password</dd>
+            
+            <dt>Monthly limits</dt><dd>Minutes of calls Robin places: 60 a month; Voice minutes of practice calls a month (both sides count): 300 a month, yours to change</dd>
+            
+          </dl>
+          <details><summary>7 tools</summary><ul><li><code>propose_call</code> Propose a phone call Robin places for the owner, for example to book a table or ask a business a question.</li><li><code>propose_calls</code> Propose 2 to 10 calls for one errand together (for example asking several shops the same question): each item is a propose_call brief.</li><li><code>propose_text</code> Propose a text (SMS) Robin sends for the owner from one of Robin&#39;s US numbers.</li><li><code>recent_texts</code> Text conversations on Robin&#39;s numbers, newest first: the other number, which of Robin&#39;s numbers, the latest text and how many are unread.</li><li><code>read_texts</code> One text conversation by number from recent_texts: the texts both ways, oldest first, with what Robin sent and whether it went.</li><li><code>recent_calls</code> The calls Robin answered or placed, newest first: who, when, how long, how it ended and, for calls Robin placed, the result.</li><li><code>read_call</code> One call by call_id from recent_calls: its summary, what was agreed, follow-ups, the brief it was placed from, and the transcript.</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="research">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Research</h3>
+          <p>Answers from the web: Robin searches with the terms you approve and reads the pages for you.</p>
+          <dl>
+            <dt>Can reach</dt><dd>The web, through the model vendor&#39;s search, with the search terms you approve</dd>
+            
+            
+            
+            
+          </dl>
+          <details><summary>1 tool</summary><ul><li><code>research</code> Look the owner&#39;s question up on the web: a separate researcher with web search and a browser reads current pages and returns an answer with its sources.</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="browser">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Browser</h3>
+          <p>A confined browser for research and errands Robin runs for you; never used from chat directly.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>api.browser-use.com</code>, <code>*.cdp.browser-use.com</code></dd>
+            <dt>Needs</dt><dd>Browser use key</dd>
+            
+            <dt>Monthly limits</dt><dd>Browser actions: 1,000 a month, yours to change</dd>
+            <dt>Runs with</dt><dd>128 MB memory · 1 CPU · up to 32 processes</dd>
+          </dl>
+          <details><summary>6 tools</summary><ul><li><code>browser_open</code> Open an http or https address in this run&#39;s browser and read its first part.</li><li><code>browser_read</code> Read the current page again, or a later part of it (part 2, 3, …).</li><li><code>browser_click</code> Click element n from the last read, then read the page it leads to.</li><li><code>browser_type</code> Type text into text field n from the last read, replacing what is there; submit presses Enter.</li><li><code>browser_select</code> Choose an option, by its visible text, in list n from the last read.</li><li><code>browser_back</code> Go back to the previous page and read it.</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="images">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Remote images in mail</h3>
+          <p>Loads a message&#39;s remote images when you ask, and senders&#39; logos, fetched by Robin, never by your browser.</p>
+          <dl>
+            <dt>Can reach</dt><dd>Any public website, for the images a message shows and senders&#39; logos only</dd>
+            
+            
+            <dt>Monthly limits</dt><dd>Images: 20,000 a month, yours to change</dd>
+            <dt>Runs with</dt><dd>128 MB memory · 1 CPU · up to 32 processes</dd>
+          </dl>
+          <details><summary>3 tools</summary><ul><li><code>fetch_image</code> One remote image an email shows, fetched over https without cookies or referrer.</li><li><code>fetch_logo</code> One brand logo (an SVG) a sender&#39;s domain publishes for BIMI, fetched over https without cookies or referrer.</li><li><code>find_icon</code> The icon a sender&#39;s site declares on its homepage (&lt;link rel=&#34;icon&#34;&gt;), as a URL only.</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+        <li class="addon-card" id="jev">
+          <p class="micro-label">Built in · Robin</p>
+          <h3>Jev (TypeSafe)</h3>
+          <p>Jev, a fast mail reader that decides most messages first, with Claude where it matters.</p>
+          <dl>
+            <dt>Can reach</dt><dd><code>api.typesafe.ai</code></dd>
+            <dt>Needs</dt><dd>TypeSafe API key</dd>
+            
+            <dt>Monthly limits</dt><dd>Decisions: 100,000 a month, yours to change</dd>
+            <dt>Runs with</dt><dd>128 MB memory · 1 CPU · up to 32 processes</dd>
+          </dl>
+          <details><summary>1 tool</summary><ul><li><code>jev_decide</code> One decision from TypeSafe&#39;s Jev: answers to the given questions about state, with probabilities.</li></ul></details>
+          <p class="addon-install">In Robin: Add-ons, then switch it on.</p>
+          
+        </li>
+      </ul>
+      <p class="addon-note">This page is made from the signed list Robin reads, <a href="/addons/index.json">index.json</a>, updated 21 November 2026. Being listed is not an endorsement: every add-on is installed only after you review what it may do.</p>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/" aria-label="Robin home">Robin<span class="brand-dot" aria-hidden="true"></span></a><p>A personal attention router.</p><span>robin.computer</span></footer>
+</body>
+</html>

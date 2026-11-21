@@ -23,6 +23,19 @@ The architecture section explains the qmail influence on process separation
 and the Erlang/OTP influence through Suture in Go. Upstream references are
 linked on the page.
 
+## Add-ons directory
+
+`addons/` is generated, never edited by hand. From the Robin repository:
+
+```
+robind addons index build deploy/addons-directory.json ../robin.computer/addons
+```
+
+It writes `index.json` (the list Robin reads), `index.json.sig` (Ed25519,
+signed with the owner's key in `~/.config/robin-dev/index-key`; Robin holds
+the public half) and `index.html` (this page). Commit all three together:
+an index whose signature does not match is refused by every Robin.
+
 ## Local preview and checks
 
 Serve this repository with a static server:
